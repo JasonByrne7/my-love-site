@@ -1,0 +1,142 @@
+/* Root variables for color themes */
+:root {
+  --main-pink: #ff4081;
+  --dark-pink: #e73370;
+  --light-bg: #fff0f5;
+}
+
+/* General styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: var(--light-bg);
+  color: #333;
+}
+
+/* --- Home Page Styles --- */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(70%);
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  animation: textBlurIn 1.5s ease-out forwards;
+}
+
+.overlay button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  background: var(--main-pink);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.overlay button:hover {
+  background: var(--dark-pink);
+  transform: scale(1.1);
+}
+
+/* --- Love Page Styles --- */
+.love-message {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #ffc1e3 25%, #ffe6f0 75%);
+}
+
+.love-message h2 {
+  font-size: 2.5rem;
+  color: var(--main-pink);
+}
+
+.love-message p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- Slideshow Styles --- */
+.slideshow-container {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.slide {
+  width: 100%;
+  display: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Timeline Section --- */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--main-pink);
+  transform: translateX(-50%);
+}
+
+.timeline-event {
+  position: relative;
+  width: 50%;
+  padding: 20px 30px;
+  background: #fff;
+  border: 2px solid var(--main-pink);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInTimeline 1s forwards;
+}
+
+@keyframes fadeInTimeline {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.timeline-event.left { left: 0; text-align: right; }
+.timeline-event.right { left: 50%; text-align: left; }
+
+@media screen and (max-width: 768px) {
+  .timeline::before { left: 20px; transform: none; }
+  .timeline-event { width: 100%; left: 0 !important; text-align: left; }
+}
